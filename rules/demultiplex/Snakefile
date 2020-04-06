@@ -142,7 +142,7 @@ rule check_undetermined_filesizes:
 
 
 def _add_firstbasereport(wildcards, config, field='fp_firstbasereport'):
-    # MiSeq runs do not contain a first base report file.
+    # NextSeq runs do not contain a first base report file.
     # Thus, based on the run ID, we need to decide if we want to add the first
     # base report to the email.
     result = dict()
@@ -154,7 +154,7 @@ def _add_firstbasereport(wildcards, config, field='fp_firstbasereport'):
 
     # if the run name contains a specific pattern, we infer to have a MiSeq run at hand,
     # which does not have a first base report.
-    if '_000000000-' in wildcards.run:
+    if '_NB552271_' in wildcards.run:
         # we need to hack snakemake here and provide a real file,
         # in this case the yield report file which is than added "twice" as input.
         result['fp_firstbasereport'] = [] #"%s%s%s/Reports/%s.yield_report.html" % (wildcards.prefix, config['dirs']['intermediate'], config['stepnames']['yield_report'], wildcards.run)

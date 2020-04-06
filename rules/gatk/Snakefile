@@ -58,7 +58,7 @@ rule gatk_IndelRealigner:
     shell:
         'if [ $(gatk-register > /dev/null; echo "$?") -eq 1 ]; then rm -rf /tmp/gatk; gatk-register {input.gatkpackage} 2>> {log}; fi && '
         "java"
-        " -Xmx6g -XX:ParallelGCThreads={threads}"
+        " -Xmx20g -XX:ParallelGCThreads={threads}"
         " -jar $CONDA_PREFIX/opt/gatk-3.5/GenomeAnalysisTK.jar"
         " -T IndelRealigner"
         " -I {input.bam}"

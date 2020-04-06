@@ -30,7 +30,7 @@ rule trim:
         " {params.unpairedforward}"
         " {output.pairedreverse}"
         " {params.unpairedreverse}"
-        " ILLUMINACLIP:${{CONDA_PREFIX}}/share/trimmomatic-0.33-1/adapters/TruSeq3-PE.fa:2:30:10 CROP:99 LEADING:10 TRAILING:10 SLIDINGWINDOW:4:15 MINLEN:36"
+        " ILLUMINACLIP:${{CONDA_PREFIX}}/share/trimmomatic-0.33-1/adapters/TruSeq3-PE.fa:2:30:10 CROP:149 LEADING:10 TRAILING:10 SLIDINGWINDOW:4:15 MINLEN:54"
         " >> {log} 2>&1"
 
 rule trim_singleend:

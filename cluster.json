@@ -55,7 +55,7 @@
     {
       "ppn" : "3",
       "mem" : "20GB",
-      "time" : "18:59:59",
+      "time" : "25:59:59",
     },
 
     "remove_pcr_duplicates":
@@ -67,7 +67,7 @@
 
     "gatk_IndelRealigner":
     {
-      "mem" : "5GB",
+      "mem" : "25GB",
       "ppn" : "1",
       "time" : "03:59:59",
     },

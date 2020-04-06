@@ -873,9 +873,9 @@ def collect_yield_data(dir_flowcell, verbose=None):
                     'Count': res_unknown['Barcodes'][barcode],
                     'Barcode length': 0,
                     'Barcode sequence': 'unknown'}
-                if 'Barcode sequence' in res_unknown:
-                    res_unknown['Barcode sequence'] = barcode
-                    res_unknown['Barcode length'] = len(barcode)
+                if 'Barcodes' in res_unknown:
+                    res_barcode['Barcode sequence'] = barcode
+                    res_barcode['Barcode length'] = len(barcode)
                 unknown_barcodes.append(res_barcode)
 
     lane_meta = pd.DataFrame(lane_meta).drop_duplicates().set_index('Lane')

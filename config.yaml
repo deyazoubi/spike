@@ -11,7 +11,7 @@ endings_bwa:
   - '.fa.pac'
   - '.fa.sa'
 
-mail_attachment_parameter: "-a"
+mail_attachment_parameter: "-A"
 
 emails:
   demultiplexreport: "deyazoubi@gmail.com,Layal.Yasin@med.uni-duesseldorf.de,stefan.m.janssen@gmail.com,Alemazkour@med.uni-duesseldorf.de,Frauke.Meyer@med.uni-duesseldorf.de,Daniel.Scholtyssik@med.uni-duesseldorf.de"

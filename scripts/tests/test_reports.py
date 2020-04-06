@@ -16,14 +16,21 @@ class ChecksTests(TestCase):
         _, self.fp_tmpfile = tempfile.mkstemp()
 
     def tearDown(self):
-        os.remove(self.fp_tmpfile)
+        print("STEFAN", self.fp_tmpfile)
+        #os.remove(self.fp_tmpfile)
 
     def test_write_status_update(self):
-        with open('tests/data/statusupdate_keimbahn454.pickle', 'rb') as f:
-            (data_yields, data_coverage, data_snupy, data_calls, ss, config) = pickle.load(f)
-        write_status_update((data_yields, data_coverage, data_snupy, data_calls), self.fp_tmpfile, ss, config)
+        with open('scripts/tests/data/statusupdate_keimbahn454.pickle',
+                  'rb') as f:
+            (data_yields, data_coverage, data_snupy,
+             data_calls, ss, config) = pickle.load(f)
+        write_status_update(
+            (data_yields, data_coverage,
+             data_snupy, data_calls, pd.DataFrame()),
+            self.fp_tmpfile, ss, config)
         obs = pd.read_excel(self.fp_tmpfile, header=None)
-        exp = pd.read_excel('tests/data/statusupdate_keimbahn454.xlsx', header=None)
+        exp = pd.read_excel(
+            'scripts/tests/data/statusupdate_keimbahn454.xlsx', header=None)
         for obj in [exp, obs]:
             # this cell hold timestamp and machine specific information
             obj.iloc[0, 0] = ""

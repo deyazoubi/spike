@@ -1,0 +1,9 @@
+nose
+pep8
+flake8
+snakemake
+biom-format
+h5py
+xlsxwriter
+xlrd
+seaborn

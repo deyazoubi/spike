@@ -1,0 +1,33 @@
+# Check on http://lint.travis-ci.org/ after modifying it!
+sudo: false
+language: python
+python:
+  - "3.6"
+os:
+  - linux
+before_install:
+  - echo "$TRAVIS_OS_NAME"
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda config --add channels conda-forge
+  - conda config --add channels anaconda
+  - conda config --add channels https://conda.anaconda.org/bioconda
+  # Update conda itself
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+install:
+  - conda create -n test_env python=$PYVERSION --file ci/conda_requirements.txt
+  - source activate test_env
+  - pip install -r ci/pip_requirements.txt
+script:
+  #- cd scripts/ && COVERAGE_FILE=.coverage coverage run -p --concurrency=multiprocessing --rcfile .coveragerc tests/test_parse_samplesheet.py tests/test_reports.py
+  - nosetests --with-coverage scripts/ --cover-package=scripts/
+  #- coverage combine
+  #- flake8 scripts/
+after_success:
+  - coveralls

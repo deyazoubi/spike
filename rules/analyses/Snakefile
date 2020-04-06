@@ -33,7 +33,7 @@ rule biom_merge:
 
 rule install_bamstat:
     output:
-        "{prefix}%sbamstat04-fat.jar" % (config['dirs']['references'])
+        "{prefix}%sbamstat04.jar" % (config['dirs']['references'])
     conda:
         "envs/spike_bamstats.yaml"
     log:
@@ -48,8 +48,9 @@ rule install_bamstat:
         ' && cd $workdir >> {log} 2>&1'
         ' && git clone "https://github.com/lindenb/jvarkit.git" >> {log} 2>&1'
         ' && cd jvarkit 2>> {log}'
-        ' && make bamstats04 standalone=yes >> {log} 2>&1'
-        ' && cp -v dist/bamstats04-fat.jar {output} >> {log} 2>&1'
+        #' && make bamstats04 standalone=yes >> {log} 2>&1'
+        ' && ./gradlew bamstats04 >> {log} 2>&1'#new makefile
+        ' && cp -v dist/bamstats04.jar {output} >> {log} 2>&1'
         ' && cd 2>> {log}'
         ' && rm -rfv $workdir >> {log} 2>&1'
 
@@ -58,7 +59,7 @@ rule bamstat:
     input:
         bam="{prefix}%s%s/{sample}.reCal.reAl.nodup.srt.bam" % (config['dirs']['intermediate'], config['stepnames']['gatk_PrintReads']),
         exometrack=lambda wildcards: "%s%s%s" % (config['dirs']['prefix'], config['dirs']['references'], get_reference_exometrack(wildcards.sample, SAMPLESHEETS, config)),
-        bin_bamstat="{prefix}%sbamstat04-fat.jar" % (config['dirs']['references']),
+        bin_bamstat="{prefix}%sbamstat04.jar" % (config['dirs']['references']),
     output:
         "{prefix}%s%s/{sample}.bamstat.tsv" % (config['dirs']['intermediate'], config['stepnames']['bamstat'])
     conda:

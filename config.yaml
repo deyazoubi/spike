@@ -14,8 +14,8 @@ endings_bwa:
 mail_attachment_parameter: "-a"
 
 emails:
-  demultiplexreport: "stefan.m.janssen@gmail.com,Alemazkour@med.uni-duesseldorf.de,Frauke.Meyer@med.uni-duesseldorf.de,Daniel.Scholtyssik@med.uni-duesseldorf.de"
-  backup_validated: "stefan.m.janssen@gmail.com,Alemazkour@med.uni-duesseldorf.de,Frauke.Meyer@med.uni-duesseldorf.de,Daniel.Scholtyssik@med.uni-duesseldorf.de"
+  demultiplexreport: "deyazoubi@gmail.com,Layal.Yasin@med.uni-duesseldorf.de,stefan.m.janssen@gmail.com,Alemazkour@med.uni-duesseldorf.de,Frauke.Meyer@med.uni-duesseldorf.de,Daniel.Scholtyssik@med.uni-duesseldorf.de"
+  backup_validated: "deyazoubi@gmail.com,Layal.Yasin@med.uni-duesseldorf.de,stefan.m.janssen@gmail.com,Alemazkour@med.uni-duesseldorf.de,Frauke.Meyer@med.uni-duesseldorf.de,Daniel.Scholtyssik@med.uni-duesseldorf.de"
 
 name_program: "spike"
 
@@ -127,6 +127,8 @@ projects:
       hhu:
         contact: "Ute Fischer"
         project_id: 2
+    genepanels:
+      - Sujal_Gosh
   Canada_Reid:
     species: mus musculus
     snupy:
@@ -201,7 +203,14 @@ projects:
     species: homo sapiens
   microbiome_mouse_pax5_prj2:
     species: mus musculus
-
+  ETV6_RUNX1:
+    species: homo sapiens
+    snupy:
+      hhu:
+        contact: "Ute Fischer"
+        project_id: 8
+    min_coverage: 60
+    
 sample_aliases:
   - real_id:
       Sample_ID: 'HL_rem'

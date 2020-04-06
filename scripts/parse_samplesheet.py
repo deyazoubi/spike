@@ -527,8 +527,8 @@ def get_reference_varscan_somatic(sample, samplesheets, config):
 def _run2date(run):
     date='%04i/%02i/%02i' % (
         int(run.split('_')[0][:2])+2000,
-        int(run.split('_')[0][3:4]),
-        int(run.split('_')[0][5:6]))
+        int(run.split('_')[0][2:4]),
+        int(run.split('_')[0][4:6]))
     return date
 
 

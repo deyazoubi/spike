@@ -1,6 +1,7 @@
 name: spike_excavator
 
 channels:
+  - conda-forge
   - anaconda
   - bioconda
   - r

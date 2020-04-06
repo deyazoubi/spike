@@ -24,7 +24,7 @@ rule rejoin_sample:
         # NO, you cannot!
         #' cat {params.single_fastqs} > {output} 2> {log};'
         ' zcat {params.single_fastqs}'
-        ' | pigz --blocksize 1024 -6 --stdout '
+        ' | pigz --blocksize 1024 -6 --stdout -p {threads}'
         ' | dd > {output} 2>> {log}; '
         ' else'
         ' cp -l -v {params.single_fastqs} {output} 2> {log} 1>&2;'

@@ -1,0 +1,3 @@
+[report]
+omit =
+	*/scripts/tests/test_*.py
